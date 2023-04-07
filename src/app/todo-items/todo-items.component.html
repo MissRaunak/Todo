@@ -1,0 +1,27 @@
+<div>
+  <div style="margin-top: 74px; margin-bottom: -57px">
+    <p id="icon"><mat-icon class="material" color="accent">check_circle</mat-icon></p>
+    <p id="text">
+      <label>{{ todo.title }}</label>
+    </p>
+
+    <div *ngIf="!editable">
+      <p id="iconn">
+        <mat-icon id="edit" (click)="editable = !editable">edit</mat-icon>
+      </p>
+      <p id="iconnn">
+        <mat-icon (click)="remove.emit()" id="delete">delete</mat-icon>
+      </p>
+    </div>
+    <div style="margin-left: 29%">
+      <div *ngIf="editable">
+        <mat-form-field class="example-full-width" appearance="outline" style="width: 375px">
+          <input matInput [value]="todo.title" #editedItem />
+        </mat-form-field>
+        <button mat-raised-button (click)="saveItem(editedItem.value)" color="accent">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

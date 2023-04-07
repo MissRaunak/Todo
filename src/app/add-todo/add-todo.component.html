@@ -1,0 +1,27 @@
+<div>
+  <mat-toolbar color="accent">
+    <p id="text">Todo App</p>
+  </mat-toolbar>
+</div>
+<div>
+  <form>
+    <mat-card class="formbox">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <input matInput #newItem type="text" name="title" placeholder="Enter Tilte" id="titles" />
+      </mat-form-field>
+      <div style="text-align: center;">
+        <button mat-raised-button (click)="addtodo(newItem.value)" color="accent">ADD</button>
+      </div>
+    </mat-card>
+  </form>
+</div>
+<div *ngIf="this.todos.length === 0; else elseBlock" class="listdata">
+  No list display ...
+</div>
+<ng-template #elseBlock>
+  <ul>
+    <li *ngFor="let todo of todos" style="list-style: none">
+      <app-todo-items (remove)="remove(todo)" [todo]="todo"></app-todo-items>
+    </li>
+  </ul>
+</ng-template>
